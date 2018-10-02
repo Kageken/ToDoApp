@@ -23,8 +23,6 @@ class AddTaskViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +31,7 @@ class AddTaskViewController: UIViewController {
     }
 
     // MARK: - Actions of Buttons
-    
+
     @IBAction func categoryChosen(_ sender: Any) {
         switch (sender as AnyObject).selectedSegmentIndex {
         case 0:
@@ -50,10 +48,28 @@ class AddTaskViewController: UIViewController {
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func plusButtonTapped(_ sender: Any) {
+        let taskName = taskTextField.text
+        // 何も書かれていないときは戻る
+        if taskName == "" {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+
+        // データベースの作成
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let task = Task(context: context)
+
+        task.name = taskName
+        task.category = taskCategory
+
+        // データベースへ保存
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+
+        dismiss(animated: true, completion: nil)
     }
-    
+
     /*
     // MARK: - Navigation
 
