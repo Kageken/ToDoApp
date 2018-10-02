@@ -15,6 +15,10 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var taskTextField: UITextField!
     @IBOutlet weak var categorySegmentedControl: UISegmentedControl!
 
+    // MARK: -
+
+    var taskCategory = "ToDo"
+
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
@@ -29,7 +33,18 @@ class AddTaskViewController: UIViewController {
     }
 
     // MARK: - Actions of Buttons
+    
     @IBAction func categoryChosen(_ sender: Any) {
+        switch (sender as AnyObject).selectedSegmentIndex {
+        case 0:
+            taskCategory = "ToDo"
+        case 1:
+            taskCategory = "Shopping"
+        case 2:
+            taskCategory = "Assignment"
+        default:
+            taskCategory = "ToDo"
+        }
     }
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
