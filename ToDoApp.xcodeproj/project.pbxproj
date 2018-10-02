@@ -15,6 +15,7 @@
 		FBD0BB6321620CC200C6080F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD0BB6121620CC200C6080F /* LaunchScreen.storyboard */; };
 		FBD0BB6E21620CC200C6080F /* ToDoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0BB6D21620CC200C6080F /* ToDoAppTests.swift */; };
 		FBD0BB7921620CC200C6080F /* ToDoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0BB7821620CC200C6080F /* ToDoAppUITests.swift */; };
+		FBE2FE6621634F7500B5348A /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE2FE6521634F7500B5348A /* AddTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		FBD0BB7421620CC200C6080F /* ToDoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD0BB7821620CC200C6080F /* ToDoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppUITests.swift; sourceTree = "<group>"; };
 		FBD0BB7A21620CC200C6080F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBE2FE6521634F7500B5348A /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				FBD0BB5521620CC100C6080F /* AppDelegate.swift */,
 				FBD0BB5721620CC100C6080F /* ViewController.swift */,
 				FBD0BB5921620CC100C6080F /* Main.storyboard */,
+				FBE2FE6521634F7500B5348A /* AddTaskViewController.swift */,
 				FBD0BB5F21620CC200C6080F /* Assets.xcassets */,
 				FBD0BB6121620CC200C6080F /* LaunchScreen.storyboard */,
 				FBD0BB6421620CC200C6080F /* Info.plist */,
@@ -261,11 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-			);
-			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
@@ -281,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBD0BB5821620CC100C6080F /* ViewController.swift in Sources */,
+				FBE2FE6621634F7500B5348A /* AddTaskViewController.swift in Sources */,
 				FBD0BB5E21620CC100C6080F /* ToDoApp.xcdatamodeld in Sources */,
 				FBD0BB5621620CC100C6080F /* AppDelegate.swift in Sources */,
 			);
