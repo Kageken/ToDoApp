@@ -58,6 +58,7 @@ class AddTaskViewController: UIViewController {
         }
 
         // データベースの作成
+        // swiftlint:disable force_cast
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let task = Task(context: context)
 
@@ -65,6 +66,7 @@ class AddTaskViewController: UIViewController {
         task.category = taskCategory
 
         // データベースへ保存
+        // swiftlint:disable force_cast
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
 
         dismiss(animated: true, completion: nil)

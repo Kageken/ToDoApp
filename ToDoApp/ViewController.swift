@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -29,8 +30,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         taskTableView.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+        taskTableView.reloadData()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    // MARK: - Method of Getting data from Core Data
+
+    func getData(){
+        // swiftlint:disable force_cast
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+            tasks = try context.fetch(fetchRequest)
+
+            for key in tasksToShow.keys {
+                tasksToShow[key] = []
+            }
+            for task in tasks {
+                tasksToShow[task.category!]?.append(task.name!)
+            }
+        } catch {
+            print("Fetching Failed.")
+        }
     }
 
     // MARK: - Table View Data Source
