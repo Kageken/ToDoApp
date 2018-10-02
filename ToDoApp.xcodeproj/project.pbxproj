@@ -103,8 +103,8 @@
 			children = (
 				FBD0BB5521620CC100C6080F /* AppDelegate.swift */,
 				FBD0BB5721620CC100C6080F /* ViewController.swift */,
-				FBD0BB5921620CC100C6080F /* Main.storyboard */,
 				FBE2FE6521634F7500B5348A /* AddTaskViewController.swift */,
+				FBD0BB5921620CC100C6080F /* Main.storyboard */,
 				FBD0BB5F21620CC200C6080F /* Assets.xcassets */,
 				FBD0BB6121620CC200C6080F /* LaunchScreen.storyboard */,
 				FBD0BB6421620CC200C6080F /* Info.plist */,

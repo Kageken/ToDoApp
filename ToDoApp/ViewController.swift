@@ -7,25 +7,81 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Properties
 
     @IBOutlet weak var taskTableView: UITableView!
 
+    // MARK: - Properties for table view
+
+    var tasks:[Task] = []
+    var tasksToShow:[String:[String]] = ["ToDo":[], "Shopping":[], "Assignment":[]]
+    let taskCategories:[String] = ["ToDo", "Shopping", "Assignment"]
+
     // MARK: - View Life Cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        taskTableView.dataSource = self
+        taskTableView.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+        taskTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
     }
 
+    // MARK: - Method of Getting data from Core Data
+
+    func getData(){
+        // swiftlint:disable force_cast
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+            tasks = try context.fetch(fetchRequest)
+
+            for key in tasksToShow.keys {
+                tasksToShow[key] = []
+            }
+            for task in tasks {
+                tasksToShow[task.category!]?.append(task.name!)
+            }
+        } catch {
+            print("Fetching Failed.")
+        }
+    }
+
+    // MARK: - Table View Data Source
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return taskCategories.count
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return taskCategories[section]
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tasksToShow[taskCategories[section]]!.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+
+        let sectionData = tasksToShow[taskCategories[indexPath.section]]
+        let cellData = sectionData?[indexPath.row]
+
+        cell.textLabel?.text = "\(cellData!)"
+
+        return cell
+    }
 
 }
-
