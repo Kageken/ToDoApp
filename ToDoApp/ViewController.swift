@@ -53,7 +53,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let sectionData = tasksToShow[taskCategories[indexPath.section]]
         let cellData = sectionData?[indexPath.row]
 
-        cell.textLabel?.text = "¥(cellData!)"
+        cell.textLabel?.text = "\(cellData!)"
 
         return cell
     }
