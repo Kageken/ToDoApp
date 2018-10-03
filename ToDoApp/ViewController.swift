@@ -41,7 +41,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // MARK: - Method of Getting data from Core Data
 
-    func getData(){
+    func getData() {
         // swiftlint:disable force_cast
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         do {
@@ -82,6 +82,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = "\(cellData!)"
 
         return cell
+    }
+
+    // swiftlint:disable line_length
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        // swiftlint:disable force_cast
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        if editingStyle == .delete {
+            let deletedCategory = taskCategories[indexPath.section]
+            let deletedName = tasksToShow[deletedCategory]?[indexPath.row]
+            let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "name = %@ and category = %@", deletedName!, deletedCategory)
+
+            do {
+                let task = try context.fetch(fetchRequest)
+                context.delete(task[0])
+            } catch {
+                print("Fetching Failed.")
+            }
+
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+
+            getData()
+        }
+
+        taskTableView.reloadData()
     }
 
 }

@@ -9,7 +9,9 @@
 import XCTest
 
 class ToDoAppUITests: XCTestCase {
-        
+
+    // swiftlint:disable trailing_whitespace
+    // swiftlint:disable line_length
     override func setUp() {
         super.setUp()
         

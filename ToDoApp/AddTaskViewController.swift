@@ -27,7 +27,6 @@ class AddTaskViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       
     }
 
     // MARK: - Actions of Buttons
