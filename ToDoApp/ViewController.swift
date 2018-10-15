@@ -13,6 +13,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // MARK: - Properties
 
+    private let segueEditTaskViewController = "SegueEditTaskViewController"
+
+    //MARK: -
+
     @IBOutlet weak var taskTableView: UITableView!
 
     // MARK: - Properties for table view
@@ -73,6 +77,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return tasksToShow[taskCategories[section]]!.count
     }
 
+    // swiftlint:disable line_length
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = taskTableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseIdentifier, for: indexPath) as? TaskTableViewCell else {
             fatalError("Unexpected Index Path.")
@@ -86,7 +91,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
 
-    // swiftlint:disable line_length
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         // swiftlint:disable force_cast
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -112,4 +116,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         taskTableView.reloadData()
     }
 
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationViewController = segue.destination as? AddTaskViewController else {
+            return
+        }
+
+        let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        destinationViewController.context = context!
+        if let indexPath = taskTableView.indexPathForSelectedRow, segue.identifier == segueEditTaskViewController {
+            let editedCategory = taskCategories[indexPath.section]
+            let editedName = tasksToShow[editedCategory]?[indexPath.row]
+            let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+
+            fetchRequest.predicate = NSPredicate(format: "name = %@ and category = %@", editedName!, editedCategory)
+
+            do {
+                let task = try context?.fetch(fetchRequest)
+                destinationViewController.task = task![0]
+            } catch {
+                print("Fetching Failed.")
+            }
+        }
+    }
 }

@@ -12,12 +12,15 @@ class AddTaskViewController: UIViewController {
 
     // MARK: - Properties
 
-    @IBOutlet weak var taskTextField: UITextField!
-    @IBOutlet weak var categorySegmentedControl: UISegmentedControl!
+    //swiftlint:disable force_cast
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var task: Task?
+    var taskCategory = "ToDo"
 
     // MARK: -
 
-    var taskCategory = "ToDo"
+    @IBOutlet weak var taskTextField: UITextField!
+    @IBOutlet weak var categorySegmentedControl: UISegmentedControl!
 
     // MARK: - View Life Cycle
 
