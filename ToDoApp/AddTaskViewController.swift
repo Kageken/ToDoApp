@@ -12,17 +12,35 @@ class AddTaskViewController: UIViewController {
 
     // MARK: - Properties
 
-    @IBOutlet weak var taskTextField: UITextField!
-    @IBOutlet weak var categorySegmentedControl: UISegmentedControl!
+    //swiftlint:disable force_cast
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var task: Task?
+    var taskCategory = "ToDo"
 
     // MARK: -
 
-    var taskCategory = "ToDo"
+    @IBOutlet weak var taskTextField: UITextField!
+    @IBOutlet weak var categorySegmentedControl: UISegmentedControl!
 
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if let task = task {
+            taskTextField.text = task.name
+            taskCategory = task.category!
+            switch task.category! {
+            case "ToDo":
+                categorySegmentedControl.selectedSegmentIndex = 0
+            case "Shopping":
+                categorySegmentedControl.selectedSegmentIndex = 1
+            case "Assignment":
+                categorySegmentedControl.selectedSegmentIndex = 2
+            default:
+                categorySegmentedControl.selectedSegmentIndex = 0
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,16 +74,16 @@ class AddTaskViewController: UIViewController {
             return
         }
 
-        // データベースの作成
-        // swiftlint:disable force_cast
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let task = Task(context: context)
+        if task == nil {
+            task = Task(context: context)
+        }
 
-        task.name = taskName
-        task.category = taskCategory
+        if let task = task {
+            task.name = taskName
+            task.category = taskCategory
+        }
 
         // データベースへ保存
-        // swiftlint:disable force_cast
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
 
         dismiss(animated: true, completion: nil)
