@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB29AA3F2174816400A2B37F /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29AA3E2174816400A2B37F /* TaskTableViewCell.swift */; };
 		FBD0BB5621620CC100C6080F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0BB5521620CC100C6080F /* AppDelegate.swift */; };
 		FBD0BB5821620CC100C6080F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0BB5721620CC100C6080F /* ViewController.swift */; };
 		FBD0BB5B21620CC100C6080F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD0BB5921620CC100C6080F /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB29AA3E2174816400A2B37F /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		FBD0BB5221620CC100C6080F /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD0BB5521620CC100C6080F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBD0BB5721620CC100C6080F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				FBD0BB5521620CC100C6080F /* AppDelegate.swift */,
 				FBD0BB5721620CC100C6080F /* ViewController.swift */,
 				FBE2FE6521634F7500B5348A /* AddTaskViewController.swift */,
+				FB29AA3E2174816400A2B37F /* TaskTableViewCell.swift */,
 				FBD0BB5921620CC100C6080F /* Main.storyboard */,
 				FBD0BB5F21620CC200C6080F /* Assets.xcassets */,
 				FBD0BB6121620CC200C6080F /* LaunchScreen.storyboard */,
@@ -281,6 +284,7 @@
 			files = (
 				FBD0BB5821620CC100C6080F /* ViewController.swift in Sources */,
 				FBE2FE6621634F7500B5348A /* AddTaskViewController.swift in Sources */,
+				FB29AA3F2174816400A2B37F /* TaskTableViewCell.swift in Sources */,
 				FBD0BB5E21620CC100C6080F /* ToDoApp.xcdatamodeld in Sources */,
 				FBD0BB5621620CC100C6080F /* AppDelegate.swift in Sources */,
 			);
@@ -456,6 +460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56GPH5VFNS;
 				INFOPLIST_FILE = ToDoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -473,6 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56GPH5VFNS;
 				INFOPLIST_FILE = ToDoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

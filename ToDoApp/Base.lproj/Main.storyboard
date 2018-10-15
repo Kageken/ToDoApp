@@ -23,12 +23,40 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="cfh-xE-gZO">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="22"/>
+                                    <rect key="frame" x="0.0" y="72" width="320" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <segue destination="tY2-xh-kQU" kind="show" id="Nba-lL-bQl"/>
                                     </connections>
                                 </button>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" id="9mG-td-fae" customClass="TaskTableViewCell" customModule="ToDoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9mG-td-fae" id="VZG-cN-3Lw">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIT-N0-MKa">
+                                                    <rect key="frame" x="20" y="16" width="280" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oIT-N0-MKa" firstAttribute="top" secondItem="VZG-cN-3Lw" secondAttribute="topMargin" constant="5" id="Rqe-H5-bXe"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oIT-N0-MKa" secondAttribute="trailing" constant="5" id="lOb-Yu-whm"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="oIT-N0-MKa" secondAttribute="bottom" constant="5" id="lUT-hr-Qvf"/>
+                                                <constraint firstItem="oIT-N0-MKa" firstAttribute="leading" secondItem="VZG-cN-3Lw" secondAttribute="leadingMargin" constant="5" id="rHj-Mk-0qq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskLabel" destination="oIT-N0-MKa" id="HtL-0v-J7O"/>
+                                            <segue destination="tY2-xh-kQU" kind="show" identifier="SegueEditTaskViewController" id="DVQ-Dx-wXc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,6 +82,7 @@
                                 <rect key="frame" x="16" y="74" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZiS-HD-G0T">
@@ -104,4 +133,7 @@
             <point key="canvasLocation" x="975" y="133.09859154929578"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DVQ-Dx-wXc"/>
+    </inferredMetricsTieBreakers>
 </document>
